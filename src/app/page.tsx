@@ -3,6 +3,7 @@ import { Container } from "@/components/container";
 import { GamePrps } from "@/utils/types/game";
 import Link from "next/link";
 import { BsArrowRightSquare } from "react-icons/bs"
+import { Input } from "@/components/input"
 
 async function getListGame() {
   try {
@@ -20,7 +21,7 @@ export default async function Home() {
   return (
     <main className="w-full">
       <Container>
-        <h1 className="text-center font-bold text-xl mt-8 mb-5">
+        <h1 className="text-center text-white font-bold text-xl mt-8 mb-5">
           Separamos um jogo exclusivo pra você
         </h1>
         <Link href={`/game/${listGame.id}`}>
@@ -41,6 +42,9 @@ export default async function Home() {
             </div>
           </section>
         </Link>
+        <div>
+          <Input/>
+        </div>
       </Container>
     </main>
   );
