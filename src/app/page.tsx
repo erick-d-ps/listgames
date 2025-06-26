@@ -1,14 +1,28 @@
 import Image from "next/image";
 import { Container } from "@/components/container";
-import { GamePrps } from "@/utils/types/game";
+import { GameProps } from "@/utils/types/game";
 import Link from "next/link";
-import { BsArrowRightSquare } from "react-icons/bs"
-import { Input } from "@/components/input"
+import { BsArrowRightSquare } from "react-icons/bs";
+import { Input } from "@/components/input";
+import { GameCard } from '@/components/GameCard'
 
 async function getListGame() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_API_URL}/next-api/?api=game_day`, {next: {revalidate: 320}}
+      `${process.env.NEXT_API_URL}/next-api/?api=game_day`,
+      { next: { revalidate: 320 } }
+    );
+    return res.json();
+  } catch (err) {
+    throw new Error("Failed to fetch data");
+  }
+}
+
+async function getGamesData(){
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_API_URL}/next-api/?api=games`,
+      { next: { revalidate: 320 } }
     );
     return res.json();
   } catch (err) {
@@ -17,7 +31,9 @@ async function getListGame() {
 }
 
 export default async function Home() {
-  const listGame: GamePrps = await getListGame();
+  const listGame: GameProps = await getListGame();
+  const data: GameProps[] = await getGamesData();
+
   return (
     <main className="w-full">
       <Container>
@@ -29,7 +45,7 @@ export default async function Home() {
             <div className="w-full max-h-96 h-96 rounded-lg">
               <div className="absolute z-20 bottom-0 flex justify-center items-center gap-2 p-3">
                 <p className="font-bold text-xl text-white">{listGame.title}</p>
-                <BsArrowRightSquare size={24} color="#fff"/>
+                <BsArrowRightSquare size={24} color="#fff" />
               </div>
               <Image
                 src={listGame.image_url}
@@ -42,9 +58,19 @@ export default async function Home() {
             </div>
           </section>
         </Link>
-        <div>
-          <Input/>
-        </div>
+
+        <Input />
+
+        <h2 className="text-white font-bold mt-8 mb-5 flex justify-center">
+          Jogos para conhecer
+        </h2>
+
+        <section className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+          {data.map((item) => (
+            <GameCard data={item} key={item.id}/>
+          ))}
+        </section>
+
       </Container>
     </main>
   );

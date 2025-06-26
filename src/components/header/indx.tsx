@@ -19,18 +19,22 @@ export function Header() {
             />
           </Link>
 
-          <Link 
-          href="/"
-          className="font-medium text-neutral-700 hover:text-amber-600 transition-all duration-300"
-          >Games</Link>
-          <Link 
-          href="/profile"
-          className="font-medium text-neutral-700 hover:text-amber-600 transition-all duration-300"
-          >Perfil</Link>
+          <Link
+            href="/"
+            className="font-medium text-neutral-700 hover:text-amber-600 transition-all duration-300"
+          >
+            Games
+          </Link>
+          <Link
+            href="/profile"
+            className="font-medium text-neutral-700 hover:text-amber-600 transition-all duration-300"
+          >
+            Perfil
+          </Link>
         </nav>
         <div className="hidden sm:flex justify-center items-center">
           <Link href="/profile">
-            <LiaGamepadSolid size={34} color="#475569"/>
+            <LiaGamepadSolid size={34} color="#475569" />
           </Link>
         </div>
       </div>
