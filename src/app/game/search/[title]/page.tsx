@@ -2,11 +2,32 @@ import { GameProps } from "@/utils/types/game";
 import { Container } from "@/components/container";
 import { Input } from "@/components/input";
 import { GameCard } from "@/components/GameCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: `List Games - Encontrados`,
+    description: "Jogos organizados e separados.",
+    keywords: ['games', 'jogos', 'steam'],
+    openGraph: {
+      images: [`${process.env.PROJECT_URL}/preview.png`]
+    },
+    robots:{
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+      }
+    }
+  };
 
 async function getData(title: string) {
   try {
+    const decodeTitle = decodeURI(title)
     const res = await fetch(
-      `${process.env.NEXT_API_URL}/next-api/?api=game&title=${title}`
+      `${process.env.NEXT_API_URL}/next-api/?api=game&title=${decodeTitle}`
     );
     return res.json();
   } catch (err) {
