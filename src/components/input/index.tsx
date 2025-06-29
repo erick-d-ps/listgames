@@ -30,7 +30,7 @@ export function Input() {
         onChange={(e) => setInput(e.target.value)}
       />
       <button type="submit">
-        <FiSearch size={24} color="#ea580c" />
+        <FiSearch size={24} color="##EA580C" />
       </button>
     </form>
   );

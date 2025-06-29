@@ -24,7 +24,7 @@ export function GameCard({data}: GameCardProps) {
 
       <div className="flex justify-between items-center mt-4">
         <p className="text-sm font-bold px-2 text-white text-ellipsis truncate whitespace-nowrap overflow-hidden">{data.title}</p>
-        <BiRightArrowCircle size={24} color='#fff'/>
+        <BiRightArrowCircle size={24} color='#EA580C'/>
       </div>
     </section>
    </Link>
