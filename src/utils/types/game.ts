@@ -7,3 +7,10 @@ export interface GameProps{
    categories: string[];
    release: string;   
 }
+
+
+export interface PropeParams{
+   params:{
+     id:string
+   }
+ }
