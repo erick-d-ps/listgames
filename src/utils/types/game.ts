@@ -9,7 +9,7 @@ export interface GameProps{
 }
 
 
-export interface PropeParams{
+export interface ParamsProps{
    params:{
      id:string
    }

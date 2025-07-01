@@ -1,12 +1,12 @@
 import { Container } from "@/components/container";
-import { GameProps, PropeParams } from "@/utils/types/game";
+import { GameProps, ParamsProps } from "@/utils/types/game";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Label } from "../components/label";
 import { GameCard } from "@/components/GameCard";
 import { Metadata } from "next";
 
-export async function generateMetadata({params}: PropeParams): Promise<Metadata>{
+export async function generateMetadata({params}:  ParamsProps){
   try {
     const response: GameProps = await fetch(
       `${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`,
@@ -69,7 +69,7 @@ async function getGameSorted() {
   }
 }
 
-export default async function Detalhe({params}: PropeParams) {
+export default async function Detalhe({params}:  ParamsProps) {
   const data: GameProps = await getData(params.id);
   const gameSorted: GameProps = await getGameSorted();
 
