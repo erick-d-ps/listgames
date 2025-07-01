@@ -4,7 +4,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Label } from "../components/label";
 import { GameCard } from "@/components/GameCard";
-import { Metadata } from "next";
+
 
 export async function generateMetadata({params}:  ParamsProps){
   try {
