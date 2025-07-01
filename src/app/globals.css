@@ -2,4 +2,5 @@
 
 body{
   background-color: rgb(32, 29, 29);
+  font-family: var(--font-inter), sans-serif ;
 }
