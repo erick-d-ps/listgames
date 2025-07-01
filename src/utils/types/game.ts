@@ -9,8 +9,3 @@ export interface GameProps{
 }
 
 
-export interface ParamsProps{
-   params:{
-     id:string
-   }
- }
